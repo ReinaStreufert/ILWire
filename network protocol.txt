@@ -60,8 +60,8 @@ packet format
 0x08 sb write to API stream
   08 bytes: stream id
   04 bytes: content length
-XX bytes: content
-  0x06 cb write to API stream
+  XX bytes: content
+0x06 cb write to API stream
   08 bytes: stream id
   04 bytes: content length
-XX bytes: content
+  XX bytes: content
