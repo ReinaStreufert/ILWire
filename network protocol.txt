@@ -1,0 +1,67 @@
+packet format
+  01 byte: packet type
+  04 bytes: packet body length
+  XX bytes: packet body
+0x00 sb disconnect
+0x00 cb disconnect
+  Packet body is 1 byte specifying disconnect reason:
+  00 Protocol error
+  01 Host shut down
+  02 Unauthorized client
+  03 Kicked (public key authorization revoked while session open)
+0x01 xb keep-alive
+  Sent first by client, repeatedly thrown back and forth between the client and server. When a party receives this message it must take at most 10 seconds and at least 5 seconds to respond.
+  02 bytes: echoed id (or zero if first keep-alive message)
+  02 bytes: new random id
+0x02 sb handshake
+  04 bytes: constant 0x69 0x6C 0x77 0x69 (ascii ‘ilwi’)
+  04 bytes: RSA key modulus length
+  XX bytes: RSA key modulus
+  4X bytes: RSA key exponent length
+  XX bytes: RSA key exponent
+  The host responds with host info
+0x02 cb host info
+  04 bytes: RSA key modulus length
+  XX bytes: RSA key modulus
+  4X bytes: RSA key exponent length
+  XX bytes: RSA key exponent
+0x03 sb authenticate
+  The packet body data is encrypted with the host’s public RSA key
+  32 bytes: cryptographic challenge
+  The host responds with enable encryption
+0x04 sb authenticate with key registration code
+  The packet body data is encrypted with the host’s public RSA key
+  32 bytes: cryptographic client challenge
+  04 bytes: temporary key registration code
+  The host responds with enable encryption
+0x03 cb enable encryption
+  The packet body data is encrypted with the client’s public RSA key
+  32 bytes: client challenge echo response
+  32 bytes: integrity token
+  16 bytes: symmetric key IV
+  32 bytes: symmetric key for AES encryption
+  All packets sent by either party after the host sends this packet are encrypted using the provided symmetric key. Client responds with 
+0x05 sb verify integrity
+  16 bytes: most significant 16 bytes of integrity token
+  Host responds with client authorized
+0x04 cb client authorized
+  16 bytes: least significant 16 bytes of integrity token
+  Client is now allowed to use protocol features that require authentication
+0x06 sb execute
+  04 bytes: il local signature length
+  XX bytes: il local signature
+  04 bytes: max evaluation stack size
+  04 bytes: il code length
+  XX bytes: il code
+0x05 cb attached to API stream
+  08 bytes: stream id
+0x07 sb detached API stream
+  08 bytes: stream id
+0x08 sb write to API stream
+  08 bytes: stream id
+  04 bytes: content length
+XX bytes: content
+  0x06 cb write to API stream
+  08 bytes: stream id
+  04 bytes: content length
+XX bytes: content
