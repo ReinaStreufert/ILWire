@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILWire_Lib
+namespace ILWire_Lib.Net
 {
     public interface IILWISocket
     {

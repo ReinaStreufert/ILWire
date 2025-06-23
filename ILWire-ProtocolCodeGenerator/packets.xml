@@ -1,0 +1,47 @@
+﻿<serializerAssembly name="ILWire_Serializers">
+  <sequentialBinaryType name="ILWIPacket">
+    <value name="PacketTypeId" type="byte"/>
+    <varBuffer name="PacketBody"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="CBDisconnect">
+    <value name="DisconnectReason" type="byte"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="XBKeepAlive">
+    <value name="LastToken" type="ushort"/>
+    <value name="NextToken" type="ushort"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="SBHandshake">
+    <signature hex="696c7769"/>
+    <varBuffer name="RSAModulus"/>
+    <varBuffer name="RSAExponent"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="CBHostInfo">
+    <varBuffer name="RSAModulus"/>
+    <varBuffer name="RSAExponent"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="SBAuthenticate">
+    <buffer name="Challenge" length="32"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="SBAuthenticateRegister">
+    <buffer name="Challenge" length="32"/>
+    <value name="RegistrationCode" type="int"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="CBEnableEncryption">
+    <buffer name="ClientChallenge" length="32"/>
+    <buffer name ="IntegrityToken" length="32"/>
+    <buffer name="SymmetricIV" length="16"/>
+    <buffer name="SymmetricKey" length="32"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="SBExecute">
+    <varBuffer name="ILLocalSignature"/>
+    <value name="MaxStackSize" type="int"/>
+    <varBuffer name="ILCode"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="XBStreamControl">
+    <value name="StreamID" type="ulong"/>
+  </sequentialBinaryType>
+  <sequentialBinaryType name="XBWriteStream">
+    <value name="StreamID" type="ulong"/>
+    <varBuffer name="content"/>
+  </sequentialBinaryType>
+</serializerAssembly>

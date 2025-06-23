@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILWire_Lib
+namespace ILWire_Lib.Net
 {
-    public interface IPacket
+    public interface IPacketHandler
     {
         public byte Id { get; }
-        public byte[] GetBody();
+        public Task HandleAsync(byte[] body);
     }
 }
