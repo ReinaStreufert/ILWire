@@ -15,6 +15,9 @@
     <Reference Include="AssemblyGen">
       <HintPath>..\..\AssemblyGen\AssemblyGen\AssemblyGen\bin\Debug\net9.0\AssemblyGen.dll</HintPath>
     </Reference>
+    <Reference Include="ILWire_Serializers">
+      <HintPath>..\ILWire-ProtocolCodeGenerator\bin\Debug\net9.0\packetSerializers.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

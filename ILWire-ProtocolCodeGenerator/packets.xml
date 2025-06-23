@@ -1,46 +1,46 @@
 ﻿<serializerAssembly name="ILWire_Serializers">
-  <sequentialBinaryType name="ILWIPacket">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.ILWIPacket">
     <value name="PacketTypeId" type="byte"/>
     <varBuffer name="PacketBody"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="CBDisconnect">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.CBDisconnect">
     <value name="DisconnectReason" type="byte"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="XBKeepAlive">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.XBKeepAlive">
     <value name="LastToken" type="ushort"/>
     <value name="NextToken" type="ushort"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="SBHandshake">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.SBHandshake">
     <signature hex="696c7769"/>
     <varBuffer name="RSAModulus"/>
     <varBuffer name="RSAExponent"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="CBHostInfo">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.CBHostInfo">
     <varBuffer name="RSAModulus"/>
     <varBuffer name="RSAExponent"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="SBAuthenticate">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.SBAuthenticate">
     <buffer name="Challenge" length="32"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="SBAuthenticateRegister">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.SBAuthenticateRegister">
     <buffer name="Challenge" length="32"/>
     <value name="RegistrationCode" type="int"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="CBEnableEncryption">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.CBEnableEncryption">
     <buffer name="ClientChallenge" length="32"/>
     <buffer name ="IntegrityToken" length="32"/>
     <buffer name="SymmetricIV" length="16"/>
     <buffer name="SymmetricKey" length="32"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="SBExecute">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.SBExecute">
     <varBuffer name="ILLocalSignature"/>
     <value name="MaxStackSize" type="int"/>
     <varBuffer name="ILCode"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="XBStreamControl">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.XBStreamControl">
     <value name="StreamID" type="ulong"/>
   </sequentialBinaryType>
-  <sequentialBinaryType name="XBWriteStream">
+  <sequentialBinaryType name="ILWire_Lib.Net.Packets.XBWriteStream">
     <value name="StreamID" type="ulong"/>
     <varBuffer name="content"/>
   </sequentialBinaryType>
