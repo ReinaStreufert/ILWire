@@ -12,12 +12,12 @@
   </sequentialBinaryType>
   <sequentialBinaryType name="ILWire_Lib.Net.Packets.SBHandshake">
     <signature hex="696c7769"/>
-    <varBuffer name="RSAModulus"/>
-    <varBuffer name="RSAExponent"/>
+    <string name="AuthenticationAlgorithm"/> <!-- in case a new encryption algorithm must be implemented in the future -->
+    <varBuffer name="PublicKey"/>
   </sequentialBinaryType>
   <sequentialBinaryType name="ILWire_Lib.Net.Packets.CBHostInfo">
-    <varBuffer name="RSAModulus"/>
-    <varBuffer name="RSAExponent"/>
+    <string name="AuthenticationAlgorithm"/>
+    <varBuffer name="PublicKey"/>
   </sequentialBinaryType>
   <sequentialBinaryType name="ILWire_Lib.Net.Packets.SBAuthenticate">
     <buffer name="Challenge" length="32"/>
@@ -43,5 +43,10 @@
   <sequentialBinaryType name="ILWire_Lib.Net.Packets.XBWriteStream">
     <value name="StreamID" type="ulong"/>
     <varBuffer name="content"/>
+  </sequentialBinaryType>
+
+  <sequentialBinaryType name="ILWire_Lib.Cryptography.RSAKeyData">
+    <varBuffer name="Modulus"/>
+    <varBuffer name="Exponent"/>
   </sequentialBinaryType>
 </serializerAssembly>
